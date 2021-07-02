@@ -1,0 +1,62 @@
+---
+specification: '0.5'
+name: traceroute
+unikraft:
+  version: staging
+  kconfig:
+    - CONFIG_LIBUKLIBPARAM=y
+    - CONFIG_LIBUKSCHEDCOOP=y
+    - CONFIG_LIBSYSCALL_SHIM=y
+    - CONFIG_LIBPOSIX_LIBDL=y
+    - CONFIG_LIBPOSIX_PROCESS=y
+    - CONFIG_LIBPOSIX_USER=y
+    - CONFIG_LIBPOSIX_SYSINFO=y
+    - CONFIG_UKSYSINFO=y
+    - CONFIG_LIBUKMMAP=y
+    - CONFIG_LIBUKTIME=y
+    - CONFIG_LIBDEVFS=y
+    - CONFIG_LIBUKSWRAND=y
+    - CONFIG_LIBUKSWRAND_DEVFS=y
+    - CONFIG_LIBVFSCORE_AUTOMOUNT_ROOTFS=y
+    - CONFIG_LIBVFSCORE_ROOTFS_RAMFS=y
+    - CONFIG_LIBVFSCORE_ROOTFS="ramfs"
+    - CONFIG_LIBUKDEBUG=y
+targets:
+  - architecture: x86_64
+    platform: kvm
+libraries:
+  pthread-embedded:
+    version: staging
+    kconfig:
+      - CONFIG_LIBPTHREAD_EMBEDDED=y
+  newlib:
+    version: staging
+    kconfig:
+      - CONFIG_LIBNEWLIBC=y
+  lwip:
+    version: staging
+    kconfig:
+      - CONFIG_LWIP_UKNETDEV=y
+      - CONFIG_LWIP_UKNETDEV_POLLONLY=y
+      - CONFIG_LWIP_THREADS=y
+      - CONFIG_LWIP_AUTOIFACE=y
+      - CONFIG_LWIP_SOCKET=y
+      - CONFIG_LWIP_IPV4=y
+      - CONFIG_LWIP_IPV6=y
+      - CONFIG_LWIP_UDP=y
+      - CONFIG_LWIP_RAW=y
+      - CONFIG_LWIP_DNS=y
+      - CONFIG_LWIP_ICMP=y
+  libargp:
+    version: staging
+    kconfig:
+      - CONFIG_LIBARGP=y
+  inetutils:
+    version: staging
+    kconfig:
+      - CONFIG_LIBINETUTILS=y
+      - CONFIG_LIBINETUTILS_LIBICMP=y
+      - CONFIG_LIBINETUTILS_TRACEROUTE=y
+      - CONFIG_LIBINETUTILS_TRACEROUTE_MAIN_FUNCTION=y
+volumes: {}
+networks: {}
